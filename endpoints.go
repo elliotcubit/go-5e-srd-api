@@ -91,6 +91,17 @@ func GetClassSubclasses(index string) (NamedAPIResourceList, error) {
 	return ret, nil
 }
 
+// Query should be a "+"-separated string with the keywords
+// E.g. "acid+arrow"
+func SearchSpellName(query string) (NamedAPIResourceList, error) {
+  var ret NamedAPIResourceList
+  err := doRequestAndUnmarshal("spells/?name="+query, &ret)
+  if err != nil {
+    return ret, err
+  }
+  return ret, nil
+}
+
 func GetSpell(index string) (Spell, error) {
 	var ret Spell
 	err := doRequestAndUnmarshal("spells/"+index, &ret)
