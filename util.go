@@ -1,9 +1,9 @@
 package go5e
 
 import (
-  "net/http"
-  "io/ioutil"
-  "encoding/json"
+	"encoding/json"
+	"io/ioutil"
+	"net/http"
 )
 
 // Get the bytes for an API request response
@@ -34,10 +34,10 @@ func doRequestAndUnmarshal(query string, v interface{}) error {
 
 // Do not prepend url
 func doRequestRawAndUnmarshal(url string, v interface{}) error {
-  response, err := doRequest(url)
-  if err != nil {
-    return err
-  }
-  json.Unmarshal(response, v)
-  return nil
+	response, err := doRequest(url)
+	if err != nil {
+		return err
+	}
+	json.Unmarshal(response, v)
+	return nil
 }

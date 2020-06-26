@@ -1,12 +1,13 @@
 package go5e
 
 import (
-  "errors"
+	"errors"
 )
+
 type StartingEquipment struct {
 }
 
 func GetStartingEquipment(index string) (StartingEquipment, error) {
-  var ret StartingEquipment
-  return ret, errors.New("Not implemented due to an API issue with indexing.")
+	var ret StartingEquipment
+	return ret, errors.New("Not implemented due to an API issue with indexing.")
 }

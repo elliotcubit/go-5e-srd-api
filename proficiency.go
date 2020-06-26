@@ -11,12 +11,12 @@ type Proficiency struct {
 }
 
 func GetProficiency(index string) (Proficiency, error) {
-  var ret Proficiency
-  err := doRequestAndUnmarshal("proficiencies/"+index, &ret)
-  if err != nil {
-    return ret, err
-  }
-  return ret, nil
+	var ret Proficiency
+	err := doRequestAndUnmarshal("proficiencies/"+index, &ret)
+	if err != nil {
+		return ret, err
+	}
+	return ret, nil
 }
 
 func GetProficiencyByUrl(url string) (Proficiency, error) {

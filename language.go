@@ -11,12 +11,12 @@ type Language struct {
 }
 
 func GetLanguage(index string) (Language, error) {
-  var ret Language
-  err := doRequestAndUnmarshal("languages/"+index, &ret)
-  if err != nil {
-    return ret, err
-  }
-  return ret, nil
+	var ret Language
+	err := doRequestAndUnmarshal("languages/"+index, &ret)
+	if err != nil {
+		return ret, err
+	}
+	return ret, nil
 }
 
 func GetLanguageByUrl(url string) (Language, error) {

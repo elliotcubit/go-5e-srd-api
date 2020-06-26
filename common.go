@@ -10,8 +10,8 @@ type NamedAPIResource struct {
 	Index string `json:"index"`
 	Name  string `json:"name"`
 	Url   string `json:"url"`
-	Value int `json:"value"`
-	Bonus int `json:"bonus"`
+	Value int    `json:"value"`
+	Bonus int    `json:"bonus"`
 }
 
 type NamedAPIResourceList struct {
@@ -26,48 +26,48 @@ type ClassAPIResource struct {
 }
 
 type Cost struct {
-	Quantity int `json:"quantity"`
-	Unit string `json:"unit"`
+	Quantity int    `json:"quantity"`
+	Unit     string `json:"unit"`
 }
 
 // Might be missing some things
 type Speed struct {
 	Walk string `json:"walk"`
 	Swim string `json:"swim"`
-	Fly string `json:"fly"`
+	Fly  string `json:"fly"`
 }
 
 // Might be missing some things
 type Senses struct {
-	Darkvision string `json:"darkvision"`
-	Blindsight string `json:"blindsight"`
-	PassivePerception int `json:"passive_perception"`
+	Darkvision        string `json:"darkvision"`
+	Blindsight        string `json:"blindsight"`
+	PassivePerception int    `json:"passive_perception"`
 }
 
 type Ability struct {
-	Name string `json:"name"`
-	Desc string `json:"desc"`
+	Name            string          `json:"name"`
+	Desc            string          `json:"desc"`
 	DifficultyCheck DifficultyCheck `json:"dc"`
-	AttackBonus int `json:"attack_bonus"`
-	Damage Damage `json:"damage"`
-	Usage Usage `json:"usage"`
+	AttackBonus     int             `json:"attack_bonus"`
+	Damage          Damage          `json:"damage"`
+	Usage           Usage           `json:"usage"`
 }
 
 type Usage struct {
-	Type string `json:"type"`
-	Times int `json:"times"`
+	Type  string `json:"type"`
+	Times int    `json:"times"`
 }
 
 type DifficultyCheck struct {
-		Type NamedAPIResource `json:"dc_type"`
-		Value int `json:"dc_value"`
-		SuccessType string `json:"success_type"`
+	Type        NamedAPIResource `json:"dc_type"`
+	Value       int              `json:"dc_value"`
+	SuccessType string           `json:"success_type"`
 }
 
 type Damage struct {
-	Type NamedAPIResource `json:"damage_type"`
-	Dice string `json:"damage_dice"`
-	Bonus int `json:"damage_bonus"`
+	Type  NamedAPIResource `json:"damage_type"`
+	Dice  string           `json:"damage_dice"`
+	Bonus int              `json:"damage_bonus"`
 }
 
 type NamedChoice struct {

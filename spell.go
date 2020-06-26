@@ -21,9 +21,9 @@ type Spell struct {
 }
 
 func GetSpell(index string) (Spell, error) {
-  var ret Spell
-  err := doRequestAndUnmarshal("spells/"+index, &ret)
-  return ret, err
+	var ret Spell
+	err := doRequestAndUnmarshal("spells/"+index, &ret)
+	return ret, err
 }
 
 func GetSpellByUrl(url string) (Spell, error) {
