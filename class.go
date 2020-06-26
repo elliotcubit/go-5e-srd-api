@@ -24,6 +24,19 @@ func GetClass(index string) (Class, error) {
 	return ret, nil
 }
 
+func GetClassByUrl(url string) (Class, error) {
+	var ret Class
+	err := doRequestRawAndUnmarshal(url, ret)
+	return ret, err
+}
+
+func SearchClassName(query string) (NamedAPIResourceList, error) {
+	var ret NamedAPIResourceList
+	err := doRequestAndUnmarshal("classes/?name="+query, &ret)
+	return ret, err
+}
+
+// There should be more endpoints like this
 func GetClassSubclasses(index string) (NamedAPIResourceList, error) {
 	var ret NamedAPIResourceList
 	err := doRequestAndUnmarshal("classes/"+index+"/subclasses", &ret)

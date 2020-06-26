@@ -16,3 +16,15 @@ func GetEquipmentCategory(index string) (EquipmentCategory, error) {
   }
   return ret, nil
 }
+
+func GetEquipmentCategoryByUrl(url string) (EquipmentCategory, error) {
+	var ret EquipmentCategory
+	err := doRequestRawAndUnmarshal(url, ret)
+	return ret, err
+}
+
+func SearchEquipmentCategoryByName(query string) (NamedAPIResourceList, error) {
+	var ret NamedAPIResourceList
+	err := doRequestAndUnmarshal("equipment-categories/?name="+query, &ret)
+	return ret, err
+}

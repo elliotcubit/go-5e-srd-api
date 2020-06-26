@@ -16,3 +16,15 @@ func GetDamageType(index string) (DamageType, error) {
   }
   return ret, nil
 }
+
+func GetDamageTypeByUrl(url string) (DamageType, error) {
+	var ret DamageType
+	err := doRequestRawAndUnmarshal(url, ret)
+	return ret, err
+}
+
+func SearchDamageTypeName(query string) (NamedAPIResourceList, error) {
+	var ret NamedAPIResourceList
+	err := doRequestAndUnmarshal("damage-types/?name="+query, &ret)
+	return ret, err
+}

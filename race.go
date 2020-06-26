@@ -27,3 +27,15 @@ func GetRace(index string) (Race, error) {
   }
   return ret, nil
 }
+
+func GetRaceByUrl(url string) (Race, error) {
+	var ret Race
+	err := doRequestRawAndUnmarshal(url, ret)
+	return ret, err
+}
+
+func SearchRaceByName(query string) (NamedAPIResourceList, error) {
+	var ret NamedAPIResourceList
+	err := doRequestAndUnmarshal("races/?name="+query, &ret)
+	return ret, err
+}

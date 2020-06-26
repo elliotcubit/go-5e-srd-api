@@ -13,8 +13,17 @@ type AbilityScore struct {
 func GetAbilityScore(index string) (AbilityScore, error) {
 	var ret AbilityScore
 	err := doRequestAndUnmarshal("ability-scores/"+index, &ret)
-	if err != nil {
-		return ret, err
-	}
-	return ret, nil
+	return ret, err
+}
+
+func GetAbilityScoreByUrl(url string) (AbilityScore, error) {
+	var ret AbilityScore
+	err := doRequestRawAndUnmarshal(url, ret)
+	return ret, err
+}
+
+func SearchAbilityScoreName(query string) (NamedAPIResourceList, error) {
+	var ret NamedAPIResourceList
+	err := doRequestAndUnmarshal("ability-scores/?name="+query, &ret)
+	return ret, err
 }

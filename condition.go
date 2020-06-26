@@ -16,3 +16,15 @@ func GetCondition(index string) (Condition, error) {
   }
   return ret, nil
 }
+
+func GetConditionByUrl(url string) (Condition, error) {
+	var ret Condition
+	err := doRequestRawAndUnmarshal(url, ret)
+	return ret, err
+}
+
+func SearchConditionName(query string) (NamedAPIResourceList, error) {
+	var ret NamedAPIResourceList
+	err := doRequestAndUnmarshal("conditions/?name="+query, &ret)
+	return ret, err
+}

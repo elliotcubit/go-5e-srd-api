@@ -18,3 +18,15 @@ func GetProficiency(index string) (Proficiency, error) {
   }
   return ret, nil
 }
+
+func GetProficiencyByUrl(url string) (Proficiency, error) {
+	var ret Proficiency
+	err := doRequestRawAndUnmarshal(url, ret)
+	return ret, err
+}
+
+func SearchProficiencyByName(query string) (NamedAPIResourceList, error) {
+	var ret NamedAPIResourceList
+	err := doRequestAndUnmarshal("proficiencies/?name="+query, &ret)
+	return ret, err
+}

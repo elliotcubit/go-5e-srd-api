@@ -43,3 +43,15 @@ func GetMonster(index string) (Monster, error) {
   }
   return ret, nil
 }
+
+func GetMonsterByUrl(url string) (Monster, error) {
+	var ret Monster
+	err := doRequestRawAndUnmarshal(url, ret)
+	return ret, err
+}
+
+func SearchMonsterByName(query string) (NamedAPIResourceList, error) {
+	var ret NamedAPIResourceList
+	err := doRequestAndUnmarshal("monsters/?name="+query, &ret)
+	return ret, err
+}

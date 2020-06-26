@@ -18,3 +18,15 @@ func GetLanguage(index string) (Language, error) {
   }
   return ret, nil
 }
+
+func GetLanguageByUrl(url string) (Language, error) {
+	var ret Language
+	err := doRequestRawAndUnmarshal(url, ret)
+	return ret, err
+}
+
+func SearchLanguageByName(query string) (NamedAPIResourceList, error) {
+	var ret NamedAPIResourceList
+	err := doRequestAndUnmarshal("languages/?name="+query, &ret)
+	return ret, err
+}

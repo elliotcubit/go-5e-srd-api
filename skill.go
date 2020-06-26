@@ -17,3 +17,15 @@ func GetSkill(index string) (Skill, error) {
   }
   return ret, nil
 }
+
+func GetSkillByUrl(url string) (Skill, error) {
+	var ret Skill
+	err := doRequestRawAndUnmarshal(url, ret)
+	return ret, err
+}
+
+func SearchSkillByName(query string) (NamedAPIResourceList, error) {
+	var ret NamedAPIResourceList
+	err := doRequestAndUnmarshal("skills/?name="+query, &ret)
+	return ret, err
+}

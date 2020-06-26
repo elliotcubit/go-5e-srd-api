@@ -16,3 +16,15 @@ func GetWeaponProperty(index string) (WeaponProperty, error) {
   }
   return ret, nil
 }
+
+func GetWeaponPropertyByUrl(url string) (WeaponProperty, error) {
+	var ret WeaponProperty
+	err := doRequestRawAndUnmarshal(url, ret)
+	return ret, err
+}
+
+func SearchWeaponPropertyByName(query string) (NamedAPIResourceList, error) {
+	var ret NamedAPIResourceList
+	err := doRequestAndUnmarshal("weapon-properties/?name="+query, &ret)
+	return ret, err
+}

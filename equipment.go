@@ -19,3 +19,15 @@ func GetEquipment(index string) (Equipment, error) {
   }
   return ret, nil
 }
+
+func GetEquipmentByUrl(url string) (Equipment, error) {
+	var ret Equipment
+	err := doRequestRawAndUnmarshal(url, ret)
+	return ret, err
+}
+
+func SearchEquipmentByName(query string) (NamedAPIResourceList, error) {
+	var ret NamedAPIResourceList
+	err := doRequestAndUnmarshal("equipment/?name="+query, &ret)
+	return ret, err
+}

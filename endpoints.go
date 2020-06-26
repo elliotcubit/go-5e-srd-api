@@ -39,12 +39,10 @@ func GetResourceList(endpoint string) (NamedAPIResourceList, error) {
 		// ಠ_ಠ
 		// The indices for this field are type int instead of string.
 		return ret, errors.New("Not implemented due to an API issue with indexing.")
+	} else if endpoint == "spellcasting" {
+		return ret, errors.New("Not implemented")
 	} else {
-
 		err := doRequestAndUnmarshal(endpoint, &ret)
-		if err != nil {
-			return ret, err
-		}
-		return ret, nil
+		return ret, err
 	}
 }

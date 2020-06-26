@@ -16,3 +16,15 @@ func GetMagicSchool(index string) (MagicSchool, error) {
   }
   return ret, nil
 }
+
+func GetMagicSchoolByUrl(url string) (MagicSchool, error) {
+	var ret MagicSchool
+	err := doRequestRawAndUnmarshal(url, ret)
+	return ret, err
+}
+
+func SearchMagicSchoolByName(query string) (NamedAPIResourceList, error) {
+	var ret NamedAPIResourceList
+	err := doRequestAndUnmarshal("magic-schools/?name="+query, &ret)
+	return ret, err
+}

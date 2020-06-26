@@ -19,3 +19,15 @@ func GetSubclass(index string) (Subclass, error) {
   }
   return ret, nil
 }
+
+func GetSubclassByUrl(url string) (Subclass, error) {
+	var ret Subclass
+	err := doRequestRawAndUnmarshal(url, ret)
+	return ret, err
+}
+
+func SearchSubclassByName(query string) (NamedAPIResourceList, error) {
+	var ret NamedAPIResourceList
+	err := doRequestAndUnmarshal("subclasses/?name="+query, &ret)
+	return ret, err
+}

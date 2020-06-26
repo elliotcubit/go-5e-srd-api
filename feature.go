@@ -19,3 +19,15 @@ func GetFeature(index string) (Feature, error) {
   }
   return ret, nil
 }
+
+func GetFeatureByUrl(url string) (Feature, error) {
+	var ret Feature
+	err := doRequestRawAndUnmarshal(url, ret)
+	return ret, err
+}
+
+func SearchFeatureByName(query string) (NamedAPIResourceList, error) {
+	var ret NamedAPIResourceList
+	err := doRequestAndUnmarshal("features/?name="+query, &ret)
+	return ret, err
+}

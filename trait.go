@@ -18,3 +18,15 @@ func GetTrait(index string) (Trait, error) {
   }
   return ret, nil
 }
+
+func GetTraitByUrl(url string) (Trait, error) {
+	var ret Trait
+	err := doRequestRawAndUnmarshal(url, ret)
+	return ret, err
+}
+
+func SearchTraitByName(query string) (NamedAPIResourceList, error) {
+	var ret NamedAPIResourceList
+	err := doRequestAndUnmarshal("trait/?name="+query, &ret)
+	return ret, err
+}

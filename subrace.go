@@ -25,3 +25,15 @@ func GetSubrace(index string) (Subrace, error) {
   }
   return ret, nil
 }
+
+func GetSubraceByUrl(url string) (Subrace, error) {
+	var ret Subrace
+	err := doRequestRawAndUnmarshal(url, ret)
+	return ret, err
+}
+
+func SearchSubraceByName(query string) (NamedAPIResourceList, error) {
+	var ret NamedAPIResourceList
+	err := doRequestAndUnmarshal("subraces/?name="+query, &ret)
+	return ret, err
+}

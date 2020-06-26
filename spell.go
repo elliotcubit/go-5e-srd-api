@@ -23,19 +23,17 @@ type Spell struct {
 func GetSpell(index string) (Spell, error) {
   var ret Spell
   err := doRequestAndUnmarshal("spells/"+index, &ret)
-  if err != nil {
-    return ret, err
-  }
-  return ret, nil
+  return ret, err
 }
 
-// Query should be a "+"-separated string with the keywords
-// E.g. "acid+arrow"
-func SearchSpellName(query string) (NamedAPIResourceList, error) {
-  var ret NamedAPIResourceList
-  err := doRequestAndUnmarshal("spells/?name="+query, &ret)
-  if err != nil {
-    return ret, err
-  }
-  return ret, nil
+func GetSpellByUrl(url string) (Spell, error) {
+	var ret Spell
+	err := doRequestRawAndUnmarshal(url, ret)
+	return ret, err
+}
+
+func SearchSpellByName(query string) (NamedAPIResourceList, error) {
+	var ret NamedAPIResourceList
+	err := doRequestAndUnmarshal("spells/?name="+query, &ret)
+	return ret, err
 }
