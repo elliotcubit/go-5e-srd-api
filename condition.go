@@ -23,7 +23,7 @@ func GetConditionByUrl(url string) (Condition, error) {
 	return ret, err
 }
 
-func SearchConditionName(query string) (NamedAPIResourceList, error) {
+func SearchConditionByName(query string) (NamedAPIResourceList, error) {
 	var ret NamedAPIResourceList
 	err := doRequestAndUnmarshal("conditions/?name="+query, &ret)
 	return ret, err

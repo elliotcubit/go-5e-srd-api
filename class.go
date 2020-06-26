@@ -30,7 +30,7 @@ func GetClassByUrl(url string) (Class, error) {
 	return ret, err
 }
 
-func SearchClassName(query string) (NamedAPIResourceList, error) {
+func SearchClassByName(query string) (NamedAPIResourceList, error) {
 	var ret NamedAPIResourceList
 	err := doRequestAndUnmarshal("classes/?name="+query, &ret)
 	return ret, err

@@ -23,7 +23,7 @@ func GetDamageTypeByUrl(url string) (DamageType, error) {
 	return ret, err
 }
 
-func SearchDamageTypeName(query string) (NamedAPIResourceList, error) {
+func SearchDamageTypeByName(query string) (NamedAPIResourceList, error) {
 	var ret NamedAPIResourceList
 	err := doRequestAndUnmarshal("damage-types/?name="+query, &ret)
 	return ret, err

@@ -22,7 +22,7 @@ func GetAbilityScoreByUrl(url string) (AbilityScore, error) {
 	return ret, err
 }
 
-func SearchAbilityScoreName(query string) (NamedAPIResourceList, error) {
+func SearchAbilityScoreByName(query string) (NamedAPIResourceList, error) {
 	var ret NamedAPIResourceList
 	err := doRequestAndUnmarshal("ability-scores/?name="+query, &ret)
 	return ret, err
